@@ -1,0 +1,10 @@
+---
+# vars/main.yml for snaps 
+_snaps_requirements:
+  default:
+    - snapd
+snaps_requirements: "{{_snaps_requirements[ansible_os_family] | default(_snaps_requirements['default']) }}"
+
+_snaps_packages:
+  default: []
+snaps_packages: "{{_snaps_packages[ansible_os_family] | default(_snaps_packages['default']) }}"

@@ -1,0 +1,10 @@
+---
+- name: enable snapd
+  ansible.builtin.service:
+    name: snapd
+    state: enable
+
+- name: restart snapd
+  ansible.builtin.service: 
+    name: snapd
+    state: restarted

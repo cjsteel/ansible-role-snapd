@@ -1,0 +1,16 @@
+---
+# defaults/main.yml file for snaps
+snaps_custom_packages:
+  - name: vlc
+    channel: latest/stable
+    
+  - name: authy
+    channel: latest/stable
+    state: absent
+
+# Other stuf you can add
+#    classic: true
+#     options:
+#      - com=A
+#      - foo:fooPar=X
+#      - bar:barPar=Y

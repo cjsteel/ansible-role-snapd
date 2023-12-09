@@ -1,0 +1,50 @@
+---
+# tasks main.yml for snaps
+- name: Import assert.yml
+  ansible.builtin.import_tasks:
+    file: assert.yml
+  run_once: yes
+  delegate_to: localhost
+
+- name: Install snap requirements
+  ansible.builtin.package:
+    name: "{{ item }}"
+  loop: "{{ snaps_requirements }}"
+  when:
+    - snaps_requirements is defined
+
+- name: Ensure snapd is running
+  ansible.builtin.service:
+    name: snapd
+    state: started
+
+- name: Install snaps packages
+  community.general.snap:
+    name: "{{ item.name }}"
+    channel: "{{ item.channel | default('latest/stable') }}"
+    classic: "{{ item.classic | default('false') }}"
+    options: "{{ item.options | default('[]') }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ snaps_packages }}"
+
+
+- name: Install snaps custom (defaults) packages
+  ansible.builtin.package:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ snaps_custom_packages }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - snaps_custom_packages is defined
+- name: Install custom (default) packages
+  ansible.builtin.package:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ snaps_custom_packages }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - snaps_custom_packages is defined
+  notify: restart snapd
+

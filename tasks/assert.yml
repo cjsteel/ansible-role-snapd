@@ -1,0 +1,39 @@
+---
+# tasks asserts.yml for snaps
+# boolean assert example
+#
+#- name: assert | Test snaps_reboot
+#  ansible.builtin.assert:
+#    that:
+#      - snaps_reboot is defined
+#      - snaps_reboot is boolean
+#    quiet: yes
+#
+# string assert example
+#
+#- name: assert | Test snaps_upgrade_command
+#  ansible.builtin.assert:
+#    that:
+#      - snaps_upgrade_command is defined
+#      - snaps_upgrade_command is string
+#      - snaps_upgrade_command in [ "dist", "full", "yes", "safe" ]
+#    quiet: yes
+#
+# number assert
+#
+#- name: assert | Test snaps_cache_valid_time
+#  ansible.builtin.assert:
+#    that:
+#      - snaps_cache_valid_time is defined
+#      - snaps_cache_valid_time is number
+#      - snaps_cache_valid_time >= 0
+#    quiet: yes
+#
+# list of items assert
+#
+#- name: assert | Test snaps_excluded_packages
+#  ansible.builtin.assert:
+#    that:
+#      - snaps_excluded_packages is defined
+#      - snaps_excluded_packages is iterable
+#    quiet: yes

@@ -1,0 +1,50 @@
+---
+galaxy_info:
+  author: Christopher Steel
+  role_name: snaps
+  description: Install and configure snaps on your system.
+  license: Apache
+  company: none
+  min_ansible_version: 2.12
+
+  platforms:
+    - name: Alpine
+      versions:
+        - all
+    - name: Amazon
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+
+    - snaps
+    - application
+    - cloud
+    - database
+    - development
+    - infrastructure
+    - linux
+    - monitoring
+    - networking
+    - storage
+    - security
+    - system
+    - tools
+    - windows
+
+dependencies: []
