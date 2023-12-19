@@ -4,6 +4,26 @@
 
 Install snapd and install snaps on your system.
 
+## Playbook
+
+```yaml
+#!/usr/bin/env ansible-playbook
+---
+- name: Playbook loclahost
+  hosts: localhost
+  become: yes
+  gather_facts: yes
+  roles:
+    - role: cjsteel.snapd
+      snapd_apps:
+        - name: authy
+          channel: latest/stable
+        - name: vlc
+          channel: latest/stable
+        - name: upnote
+          channel: latest/stable
+          state: absent
+
 ## Other considerations
 
 Other things to consider?

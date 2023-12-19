@@ -7,7 +7,6 @@ snapd_apps:
   - name: authy
     channel: latest/stable
     state: absent
-
 # Other stuf you can add
 #    classic: true
 #     options:
